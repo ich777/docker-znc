@@ -23,6 +23,9 @@ FROM ich777/debian-baseimage
 LABEL org.opencontainers.image.authors="admin@minenet.at"
 #LABEL org.opencontainers.image.source="https://github.com/ich777/docker-znc"
 
+RUN apt-get update && \
+    apt-get -y install libicu67 libboost-locale1.74.0
+
 COPY --from=builder /opt/znc/ /
 
 ENV DATA_DIR="/znc"
@@ -38,6 +41,7 @@ RUN mkdir $DATA_DIR && \
 	ulimit -n 2048
 
 ADD /scripts/ /opt/scripts/
+COPY /config/ /opt/
 
 RUN chmod -R 770 /opt/scripts/
 
