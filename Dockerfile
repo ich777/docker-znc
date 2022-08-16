@@ -12,8 +12,8 @@ RUN git clone https://github.com/znc/znc /tmp/znc && \
     git checkout znc-${ZNC_V} && \
     git submodule update --init --recursive
 
-RUN mkdir build && \
-    cd build && \
+RUN mkdir /tmp/znc/build && \
+    cd /tmp/znc/build && \
     cmake -DCMAKE_INSTALL_PREFIX=/usr .. && \
     make -j$(nproc -all) && \
     DESTDIR=/opt/znc make install -j$(nproc --all)
