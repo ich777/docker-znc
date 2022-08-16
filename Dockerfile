@@ -21,7 +21,7 @@ RUN mkdir /tmp/znc/build && \
 FROM ich777/debian-baseimage
 
 LABEL org.opencontainers.image.authors="admin@minenet.at"
-#LABEL org.opencontainers.image.source="https://github.com/ich777/docker-znc"
+LABEL org.opencontainers.image.source="https://github.com/ich777/docker-znc"
 
 RUN apt-get update && \
     apt-get -y install libicu67 libboost-locale1.74.0
