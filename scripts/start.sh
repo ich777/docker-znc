@@ -26,9 +26,8 @@ chown -R ${UID}:${GID} ${DATA_DIR}
 
 echo "---Starting...---"
 term_handler() {
-	screenpid="$(su $USER -c "screen -list | grep "Detached" | grep "nwnee" | cut -d '.' -f1")"
-	su $USER -c "screen -S nwnee -X stuff 'exit^M'" >/dev/null
-	tail --pid="${screenpid//[[:blank:]]/}" -f 2>/dev/null
+	kill -SIGINT $(pidof znc)
+	tail --pid="$(pidof znc)" -f 2>/dev/null
 	exit 143;
 }
 trap 'kill ${!}; term_handler' SIGTERM
