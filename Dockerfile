@@ -24,7 +24,7 @@ LABEL org.opencontainers.image.authors="admin@minenet.at"
 LABEL org.opencontainers.image.source="https://github.com/ich777/docker-znc"
 
 RUN apt-get update && \
-    apt-get -y install libicu76 libboost-locale1.74.0
+    apt-get -y install libicu72 libboost-locale1.74.0
 
 COPY --from=builder /opt/znc/ /
 
